@@ -5,9 +5,8 @@ Xiaohua Xu<sup>2</sup>,
 [Paul Wessel](http://www.soest.hawaii.edu/wessel/)<sup>1</sup>,
 David T. Sandwell<sup>2</sup>
 
-<sup>1</sup>Department of Geology and Geophysics, SOEST, University of Hawai'i at Mānoa, Honolulu, Hawaii, USA
-
-<sup>2</sup>Scripps Institution of Oceanography, University of California, San Diego, La Jolla, California, USA
+> <sup>1</sup>Department of Geology and Geophysics, SOEST, University of Hawai'i at Mānoa, Honolulu, Hawaii, USA<br>
+> <sup>2</sup>Scripps Institution of Oceanography, University of California, San Diego, La Jolla, California, USA
 
 Abstract submitted to the AGU 2018 Fall Meeting.
 
