@@ -13,9 +13,10 @@ Abstract submitted to the AGU 2018 Fall Meeting.
 |    |Info|
 |---:|:---|
 |Session|[G009: Geodetic Imaging and Interpretation of the Seismic Cycle](https://agu.confex.com/agu/fm18/preliminaryview.cgi/Session46431)|
-|Time|TBD|
-|Room|TBD|
-|Slides/Poster|doi:[TBD](TBD)|
+|Abstract|[G23B-0587](https://agu.confex.com/agu/fm18/meetingapp.cgi/Paper/428114)|
+|Time|Tuesday, 11 December 2018 / 13:40 - 18:00|
+|Room|Convention Ctr - Hall A-C (Poster Hall)|
+|Poster|doi:[TBD](TBD)|
 
 ## Abstract
 
