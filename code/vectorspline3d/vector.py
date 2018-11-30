@@ -102,6 +102,8 @@ class VectorSpline3D(BaseGridder):
         data = np.concatenate([i.ravel() for i in data])
         if self.force_coords is None:
             self.force_coords = tuple(i.copy() for i in n_1d_arrays(coordinates, n=2))
+        else:
+            self.force_coords = n_1d_arrays(self.force_coords, n=2)
         jacobian = self.jacobian(coordinates[:2], self.force_coords)
         self.force_ = least_squares(jacobian, data, weights, self.damping)
         return self
