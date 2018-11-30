@@ -1,0 +1,25 @@
+name: agu2018
+channels:
+    - conda-forge
+    - defaults
+dependencies:
+    - python=3.6
+    - pip
+    - numpy
+    - scipy
+    - pandas
+    - xarray
+    - scikit-learn
+    - netcdf4
+    - dask
+    - numba
+    - pyproj
+    - matplotlib
+    - cartopy
+    - jupyter
+    - pytest
+    - pytest-cov
+    - flake8
+    - pylint
+    - black
+    - verde
