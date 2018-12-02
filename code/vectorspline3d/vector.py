@@ -1,15 +1,17 @@
 """
 Green's functions and gridding for 3D vector elastic deformation
 """
+import itertools
 import numpy as np
 from sklearn.utils.validation import check_is_fitted
 
 import numba
 from numba import jit
 
-from verde import get_region
+from verde import get_region, cross_val_score
 from verde.base import check_fit_input, least_squares, BaseGridder
 from verde.utils import n_1d_arrays
+from verde.model_selection import DummyClient
 
 
 # Default arguments for numba.jit
@@ -287,3 +289,154 @@ def jacobian_3d_numba(east, north, force_east, force_north, depth, poisson, jac)
             jac[i + 2 * npoints, j + nforces] = g_un
             jac[i + 2 * npoints, j + 2 * nforces] = g_uu
     return jac
+
+
+class VectorSpline3DCV(BaseGridder):
+    r"""
+    Cross-validated version of the 3-component vector spline.
+
+    Parameters
+    ----------
+    poisson : iterable (list, tuple, array)
+        The Poisson's ratio for the elastic deformation Green's functions.
+    depth : float
+        The depth of the forces (should be a positive scalar). Data points are
+        considered to be at 0 depth. Acts as the *mindist* parameter for
+        :class:`verde.Spline` (a smoothing agent). A good rule of thumb is to use the
+        average spacing between data points.
+    damping : None or float
+        The positive damping regularization parameter. Controls how much smoothness is
+        imposed on the estimated forces. If None, no regularization is used.
+    force_coords : None or tuple of arrays
+        The easting and northing coordinates of the point forces. If None (default),
+        then will be set to the data coordinates the first time
+        :meth:`~verde.VectorSpline3D.fit` is called.
+
+    Attributes
+    ----------
+    force_ : array
+        The estimated forces that fit the observed data.
+    region_ : tuple
+        The boundaries (``[W, E, S, N]``) of the data used to fit the
+        interpolator. Used as the default region for the
+        :meth:`~verde.VectorSpline3D.grid` and :meth:`~verde.VectorSpline3D.scatter`
+        methods.
+
+    """
+
+    def __init__(
+        self,
+        poissons=(0, 0.25, 0.5),
+        depths=(1e3, 10e3, 100e3),
+        dampings=(None, 1e-3, 1e-1),
+        force_coords=None,
+        cv=None,
+        client=None,
+    ):
+        self.poissons = poissons
+        self.depths = depths
+        self.dampings = dampings
+        self.force_coords = force_coords
+        self.cv = cv
+        self.client = client
+
+    def fit(self, coordinates, data, weights=None):
+        """
+        Fit the gridder to the given 3-component vector data.
+
+        The data region is captured and used as default for the
+        :meth:`~verde.VectorSpline3D.grid` and :meth:`~verde.VectorSpline3D.scatter`
+        methods.
+
+        All input arrays must have the same shape.
+
+        Parameters
+        ----------
+        coordinates : tuple of arrays
+            Arrays with the coordinates of each data point. Should be in the
+            following order: (easting, northing, vertical, ...). Only easting
+            and northing will be used, all subsequent coordinates will be
+            ignored.
+        data : tuple of array
+            A tuple ``(east_component, north_component, up_component)`` of
+            arrays with the vector data values at each point.
+        weights : None or tuple array
+            If not None, then the weights assigned to each data point. Must be
+            one array per data component. Typically, this should be 1 over the
+            data uncertainty squared.
+
+        Returns
+        -------
+        self
+            Returns this estimator instance for chaining operations.
+
+        """
+        if self.client is None:
+            client = DummyClient()
+            coordinates_future = coordinates
+            data_future = data
+            weights_future = weights
+        else:
+            client = self.client
+            coordinates_future = client.scatter(coordinates)
+            data_future = client.scatter(data)
+            weights_future = client.scatter(weights)
+        combinations = list(
+            itertools.product(self.dampings, self.depths, self.poissons)
+        )
+        scores = []
+        for i, (damping, depth, poisson) in enumerate(combinations):
+            spline = VectorSpline3D(
+                damping=damping,
+                poisson=poisson,
+                depth=depth,
+                force_coords=self.force_coords,
+            )
+            cv_scores = client.submit(
+                cross_val_score,
+                spline,
+                coordinates_future,
+                data_future,
+                weights=weights_future,
+                cv=self.cv,
+            )
+            scores.append(client.submit(np.mean, cv_scores))
+        if self.client is not None:
+            scores = [i.result() for i in scores]
+        self.scores_ = np.array(scores)
+        best = np.argmax(self.scores_)
+        self.damping_ = combinations[best][0]
+        self.depth_ = combinations[best][1]
+        self.poisson_ = combinations[best][2]
+        self.spline_ = VectorSpline3D(
+            damping=self.damping_,
+            poisson=self.poisson_,
+            depth=self.depth_,
+            force_coords=self.force_coords,
+        )
+        self.spline_.fit(coordinates, data, weights=weights)
+        return self
+
+    def predict(self, coordinates):
+        """
+        Evaluate the fitted gridder on the given set of points.
+
+        Requires a fitted estimator (see :meth:`~verde.VectorSpline3D.fit`).
+
+        Parameters
+        ----------
+        coordinates : tuple of arrays
+            Arrays with the coordinates of each data point. Should be in the
+            following order: (easting, northing, vertical, ...). Only easting
+            and northing will be used, all subsequent coordinates will be
+            ignored.
+
+        Returns
+        -------
+        data : tuple of arrays
+            A tuple ``(east_component, north_component, up_component)`` of
+            arrays with the predicted vector data values at each point.
+
+        """
+        check_is_fitted(self, ["spline_"])
+        return self.spline_.predict(coordinates)
