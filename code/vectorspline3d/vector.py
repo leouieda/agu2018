@@ -371,16 +371,6 @@ class VectorSpline3DCV(BaseGridder):
             Returns this estimator instance for chaining operations.
 
         """
-        if self.client is None:
-            client = DummyClient()
-            coordinates_future = coordinates
-            data_future = data
-            weights_future = weights
-        else:
-            client = self.client
-            coordinates_future = client.scatter(coordinates)
-            data_future = client.scatter(data)
-            weights_future = client.scatter(weights)
         combinations = list(
             itertools.product(self.dampings, self.depths, self.poissons)
         )
@@ -392,17 +382,19 @@ class VectorSpline3DCV(BaseGridder):
                 depth=depth,
                 force_coords=self.force_coords,
             )
-            cv_scores = client.submit(
-                cross_val_score,
-                spline,
-                coordinates_future,
-                data_future,
-                weights=weights_future,
-                cv=self.cv,
+            scores.append(
+                cross_val_score(
+                    spline,
+                    coordinates,
+                    data,
+                    weights=weights,
+                    cv=self.cv,
+                    client=self.client,
+                )
             )
-            scores.append(client.submit(np.mean, cv_scores))
         if self.client is not None:
-            scores = [i.result() for i in scores]
+            scores = [np.mean([future.result() for future in futures])
+                      for futures in scores]
         self.scores_ = np.array(scores)
         best = np.argmax(self.scores_)
         self.damping_ = combinations[best][0]
