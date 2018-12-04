@@ -132,7 +132,7 @@ class VectorSpline3D(BaseGridder):
 
         """
         check_is_fitted(self, ["force_"])
-        force_east, force_north = self.force_coords
+        force_east, force_north = n_1d_arrays(self.force_coords, n=2)
         east, north = n_1d_arrays(coordinates, n=2)
         cast = np.broadcast(*coordinates[:2])
         components = predict_3d_numba(
@@ -140,7 +140,7 @@ class VectorSpline3D(BaseGridder):
             north,
             force_east,
             force_north,
-            self.depth,
+            self.depth * np.ones_like(force_east),
             self.poisson,
             self.force_,
             np.empty(cast.size, dtype=east.dtype),
@@ -178,11 +178,11 @@ class VectorSpline3D(BaseGridder):
         east, north = n_1d_arrays(coordinates, n=2)
         shape = (east.size * 3, force_east.size * 3)
         jac = jacobian_3d_numba(
-            east.astype(dtype),
-            north.astype(dtype),
-            force_east.astype(dtype),
-            force_north.astype(dtype),
-            self.depth,
+            east,
+            north,
+            force_east,
+            force_north,
+            self.depth * np.ones_like(force_east),
             self.poisson,
             np.empty(shape, dtype=dtype),
         )
@@ -245,7 +245,7 @@ def predict_3d_numba(
         vec_up[i] = 0
         for j in range(nforces):
             g_ee, g_en, g_eu, g_ne, g_nn, g_nu, g_ue, g_un, g_uu = GREENS_FUNC_3D_JIT(
-                east[i] - force_east[j], north[i] - force_north[j], depth, poisson
+                east[i] - force_east[j], north[i] - force_north[j], depth[j], poisson
             )
             vec_east[i] += (
                 g_ee * forces[j]
@@ -277,7 +277,7 @@ def jacobian_3d_numba(east, north, force_east, force_north, depth, poisson, jac)
     for i in numba.prange(npoints):  # pylint: disable=not-an-iterable
         for j in range(nforces):
             g_ee, g_en, g_eu, g_ne, g_nn, g_nu, g_ue, g_un, g_uu = GREENS_FUNC_3D_JIT(
-                east[i] - force_east[j], north[i] - force_north[j], depth, poisson
+                east[i] - force_east[j], north[i] - force_north[j], depth[j], poisson
             )
             jac[i, j] = g_ee
             jac[i, j + nforces] = g_en
@@ -393,8 +393,9 @@ class VectorSpline3DCV(BaseGridder):
                 )
             )
         if self.client is not None:
-            scores = [np.mean([future.result() for future in futures])
-                      for futures in scores]
+            scores = [
+                np.mean([future.result() for future in futures]) for futures in scores
+            ]
         self.scores_ = np.array(scores)
         best = np.argmax(self.scores_)
         self.damping_ = combinations[best][0]

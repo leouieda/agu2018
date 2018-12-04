@@ -32,3 +32,27 @@ def sample_from_grid(grid, coordinates=None, size=None, random_state=None):
         columns[name] = sampled_grid[name].values
     sample = pd.DataFrame(columns)
     return sample
+
+
+class DummyGridder:
+    """
+    A gridder that does nothing.
+    """
+
+    def fit(self, *args, **kwargs):
+        """
+        Does nothing.
+        """
+        return self
+
+    def filter(self, *args):
+        """
+        Does nothing.
+        """
+        return args
+
+    def predict(self, coordinates):
+        """
+        Does nothing.
+        """
+        return np.zeros_like(coordinates[0])
