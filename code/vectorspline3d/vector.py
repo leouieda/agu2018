@@ -4,6 +4,10 @@ Green's functions and gridding for 3D vector elastic deformation
 import itertools
 import numpy as np
 from sklearn.utils.validation import check_is_fitted
+try:
+    from pykdtree.kdtree import KDTree
+except ImportError:
+    from scipy.spatial import cKDTree as KDTree  # pylint: disable=no-name-in-module
 
 import numba
 from numba import jit
@@ -51,11 +55,13 @@ class VectorSpline3D(BaseGridder):
 
     """
 
-    def __init__(self, poisson=0.5, depth=10e3, damping=None, force_coords=None):
+    def __init__(self, poisson=0.5, depth=10e3, damping=None, force_coords=None,
+                 depth_nneighbors=False):
         self.poisson = poisson
         self.depth = depth
         self.damping = damping
         self.force_coords = force_coords
+        self.depth_nneighbors = depth_nneighbors
 
     def fit(self, coordinates, data, weights=None):
         """
@@ -106,6 +112,12 @@ class VectorSpline3D(BaseGridder):
             self.force_coords = tuple(i.copy() for i in n_1d_arrays(coordinates, n=2))
         else:
             self.force_coords = n_1d_arrays(self.force_coords, n=2)
+        if self.depth_nneighbors:
+            points = np.transpose(self.force_coords)
+            tree = KDTree(points)
+            nndist = np.median(tree.query(points, k=self.depth_nneighbors)[0], axis=1)
+            nndist -= nndist.min()
+            self.depth = self.depth + nndist
         jacobian = self.jacobian(coordinates[:2], self.force_coords)
         self.force_ = least_squares(jacobian, data, weights, self.damping)
         return self
