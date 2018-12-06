@@ -4,6 +4,9 @@ Green's functions and gridding for 3D vector elastic deformation
 import itertools
 import numpy as np
 from sklearn.utils.validation import check_is_fitted
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression, Ridge
+
 try:
     from pykdtree.kdtree import KDTree
 except ImportError:
@@ -13,7 +16,7 @@ import numba
 from numba import jit
 
 from verde import get_region, cross_val_score
-from verde.base import check_fit_input, least_squares, BaseGridder
+from verde.base import check_fit_input, BaseGridder
 from verde.utils import n_1d_arrays
 from verde.model_selection import DummyClient
 
@@ -55,11 +58,19 @@ class VectorSpline3D(BaseGridder):
 
     """
 
-    def __init__(self, poisson=0.5, depth=10e3, damping=None, force_coords=None,
-                 depth_nneighbors=False):
+    def __init__(
+        self,
+        poisson=0.5,
+        depth=10e3,
+        damping=None,
+        coupling=1,
+        force_coords=None,
+        depth_nneighbors=False,
+    ):
         self.poisson = poisson
         self.depth = depth
         self.damping = damping
+        self.coupling = coupling
         self.force_coords = force_coords
         self.depth_nneighbors = depth_nneighbors
 
@@ -154,6 +165,7 @@ class VectorSpline3D(BaseGridder):
             force_north,
             self.depth * np.ones_like(force_east),
             self.poisson,
+            self.coupling,
             self.force_,
             np.empty(cast.size, dtype=east.dtype),
             np.empty(cast.size, dtype=east.dtype),
@@ -196,6 +208,7 @@ class VectorSpline3D(BaseGridder):
             force_north,
             self.depth * np.ones_like(force_east),
             self.poisson,
+            self.coupling,
             np.empty(shape, dtype=dtype),
         )
         return jac
@@ -242,6 +255,7 @@ def predict_3d_numba(
     force_north,
     depth,
     poisson,
+    coupling,
     forces,
     vec_east,
     vec_north,
@@ -262,23 +276,25 @@ def predict_3d_numba(
             vec_east[i] += (
                 g_ee * forces[j]
                 + g_en * forces[j + nforces]
-                + g_eu * forces[j + 2 * nforces]
+                + coupling * g_eu * forces[j + 2 * nforces]
             )
             vec_north[i] += (
                 g_ne * forces[j]
                 + g_nn * forces[j + nforces]
-                + g_nu * forces[j + 2 * nforces]
+                + coupling * g_nu * forces[j + 2 * nforces]
             )
             vec_up[i] += (
-                g_ue * forces[j]
-                + g_un * forces[j + nforces]
+                coupling * g_ue * forces[j]
+                + coupling * g_un * forces[j + nforces]
                 + g_uu * forces[j + 2 * nforces]
             )
     return vec_east, vec_north, vec_up
 
 
 @jit(**JIT_ARGS)
-def jacobian_3d_numba(east, north, force_east, force_north, depth, poisson, jac):
+def jacobian_3d_numba(
+    east, north, force_east, force_north, depth, poisson, coupling, jac
+):
     """
         |J_ee J_en J_ev| |f_e| |d_e|
         |J_ne J_nn J_nv|*|f_n|=|d_n|
@@ -293,12 +309,12 @@ def jacobian_3d_numba(east, north, force_east, force_north, depth, poisson, jac)
             )
             jac[i, j] = g_ee
             jac[i, j + nforces] = g_en
-            jac[i, j + 2 * nforces] = g_eu
+            jac[i, j + 2 * nforces] = coupling * g_eu
             jac[i + npoints, j] = g_ne
             jac[i + npoints, j + nforces] = g_nn
-            jac[i + npoints, j + 2 * nforces] = g_nu
-            jac[i + 2 * npoints, j] = g_ue
-            jac[i + 2 * npoints, j + nforces] = g_un
+            jac[i + npoints, j + 2 * nforces] = coupling * g_nu
+            jac[i + 2 * npoints, j] = coupling * g_ue
+            jac[i + 2 * npoints, j + nforces] = coupling * g_un
             jac[i + 2 * npoints, j + 2 * nforces] = g_uu
     return jac
 
@@ -341,6 +357,8 @@ class VectorSpline3DCV(BaseGridder):
         poissons=(0, 0.25, 0.5),
         depths=(1e3, 10e3, 100e3),
         dampings=(None, 1e-3, 1e-1),
+        couplings=(0, 1),
+        depth_nneighbors=False,
         force_coords=None,
         cv=None,
         client=None,
@@ -348,7 +366,9 @@ class VectorSpline3DCV(BaseGridder):
         self.poissons = poissons
         self.depths = depths
         self.dampings = dampings
+        self.couplings = couplings
         self.force_coords = force_coords
+        self.depth_nneighbors = depth_nneighbors
         self.cv = cv
         self.client = client
 
@@ -383,41 +403,50 @@ class VectorSpline3DCV(BaseGridder):
             Returns this estimator instance for chaining operations.
 
         """
+        if self.client is None:
+            client = DummyClient()
+            futures = (coordinates, data, weights)
+        else:
+            client = self.client
+            futures = tuple(client.scatter(i) for i in (coordinates, data, weights))
         combinations = list(
-            itertools.product(self.dampings, self.depths, self.poissons)
+            itertools.product(self.dampings, self.depths, self.poissons, self.couplings)
         )
         scores = []
-        for i, (damping, depth, poisson) in enumerate(combinations):
+        for damping, depth, poisson, coupling in combinations:
             spline = VectorSpline3D(
                 damping=damping,
                 poisson=poisson,
                 depth=depth,
+                coupling=coupling,
                 force_coords=self.force_coords,
+                depth_nneighbors=self.depth_nneighbors,
             )
             scores.append(
-                cross_val_score(
+                client.submit(
+                    cross_val_score,
                     spline,
-                    coordinates,
-                    data,
-                    weights=weights,
+                    coordinates=futures[0],
+                    data=futures[1],
+                    weights=futures[2],
                     cv=self.cv,
-                    client=self.client,
                 )
             )
         if self.client is not None:
-            scores = [
-                np.mean([future.result() for future in futures]) for futures in scores
-            ]
-        self.scores_ = np.array(scores)
+            scores = [score.result() for score in scores]
+        self.scores_ = np.mean(scores, axis=1)
         best = np.argmax(self.scores_)
         self.damping_ = combinations[best][0]
         self.depth_ = combinations[best][1]
         self.poisson_ = combinations[best][2]
+        self.coupling_ = combinations[best][3]
         self.spline_ = VectorSpline3D(
             damping=self.damping_,
             poisson=self.poisson_,
             depth=self.depth_,
+            coupling=self.coupling_,
             force_coords=self.force_coords,
+            depth_nneighbors=self.depth_nneighbors,
         )
         self.spline_.fit(coordinates, data, weights=weights)
         return self
@@ -445,3 +474,23 @@ class VectorSpline3DCV(BaseGridder):
         """
         check_is_fitted(self, ["spline_"])
         return self.spline_.predict(coordinates)
+
+
+def least_squares(jacobian, data, weights, damping=None, scale=True):
+    """
+    Estimate forces that fit the data using least-squares. Scales the
+    Jacobian matrix to have unit standard deviation. This helps balance the
+    regularization and the difference between forces.
+    """
+    if scale:
+        scaler = StandardScaler(copy=False, with_mean=False, with_std=True)
+        jacobian = scaler.fit_transform(jacobian)
+    if damping is None:
+        regr = LinearRegression(fit_intercept=False, normalize=False)
+    else:
+        regr = Ridge(alpha=damping, fit_intercept=False, normalize=False)
+    regr.fit(jacobian, data.ravel(), sample_weight=weights)
+    params = regr.coef_
+    if scale:
+        params = params / scaler.scale_
+    return params
