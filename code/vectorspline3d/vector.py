@@ -16,7 +16,7 @@ import numba
 from numba import jit
 
 from verde import get_region, cross_val_score
-from verde.base import check_fit_input, BaseGridder
+from verde.base import check_fit_input, BaseGridder, least_squares
 from verde.utils import n_1d_arrays
 from verde.model_selection import DummyClient
 
@@ -65,14 +65,14 @@ class VectorSpline3D(BaseGridder):
         damping=None,
         coupling=1,
         force_coords=None,
-        depth_nneighbors=False,
+        depth_scaling=20,
     ):
         self.poisson = poisson
         self.depth = depth
         self.damping = damping
         self.coupling = coupling
         self.force_coords = force_coords
-        self.depth_nneighbors = depth_nneighbors
+        self.depth_scaling = depth_scaling
 
     def fit(self, coordinates, data, weights=None):
         """
@@ -123,10 +123,10 @@ class VectorSpline3D(BaseGridder):
             self.force_coords = tuple(i.copy() for i in n_1d_arrays(coordinates, n=2))
         else:
             self.force_coords = n_1d_arrays(self.force_coords, n=2)
-        if self.depth_nneighbors:
+        if self.depth_scaling:
             points = np.transpose(self.force_coords)
             tree = KDTree(points)
-            nndist = np.median(tree.query(points, k=self.depth_nneighbors)[0], axis=1)
+            nndist = np.median(tree.query(points, k=self.depth_scaling)[0], axis=1)
             nndist -= nndist.min()
             self.depth = self.depth + nndist
         jacobian = self.jacobian(coordinates[:2], self.force_coords)
@@ -358,7 +358,7 @@ class VectorSpline3DCV(BaseGridder):
         depths=(1e3, 10e3, 100e3),
         dampings=(None, 1e-3, 1e-1),
         couplings=(0, 1),
-        depth_nneighbors=False,
+        depth_scaling=20,
         force_coords=None,
         cv=None,
         client=None,
@@ -368,7 +368,7 @@ class VectorSpline3DCV(BaseGridder):
         self.dampings = dampings
         self.couplings = couplings
         self.force_coords = force_coords
-        self.depth_nneighbors = depth_nneighbors
+        self.depth_scaling = depth_scaling
         self.cv = cv
         self.client = client
 
@@ -420,7 +420,7 @@ class VectorSpline3DCV(BaseGridder):
                 depth=depth,
                 coupling=coupling,
                 force_coords=self.force_coords,
-                depth_nneighbors=self.depth_nneighbors,
+                depth_scaling=self.depth_scaling,
             )
             scores.append(
                 client.submit(
@@ -446,7 +446,7 @@ class VectorSpline3DCV(BaseGridder):
             depth=self.depth_,
             coupling=self.coupling_,
             force_coords=self.force_coords,
-            depth_nneighbors=self.depth_nneighbors,
+            depth_scaling=self.depth_scaling,
         )
         self.spline_.fit(coordinates, data, weights=weights)
         return self
@@ -474,23 +474,3 @@ class VectorSpline3DCV(BaseGridder):
         """
         check_is_fitted(self, ["spline_"])
         return self.spline_.predict(coordinates)
-
-
-def least_squares(jacobian, data, weights, damping=None, scale=True):
-    """
-    Estimate forces that fit the data using least-squares. Scales the
-    Jacobian matrix to have unit standard deviation. This helps balance the
-    regularization and the difference between forces.
-    """
-    if scale:
-        scaler = StandardScaler(copy=False, with_mean=False, with_std=True)
-        jacobian = scaler.fit_transform(jacobian)
-    if damping is None:
-        regr = LinearRegression(fit_intercept=False, normalize=False)
-    else:
-        regr = Ridge(alpha=damping, fit_intercept=False, normalize=False)
-    regr.fit(jacobian, data.ravel(), sample_weight=weights)
-    params = regr.coef_
-    if scale:
-        params = params / scaler.scale_
-    return params
