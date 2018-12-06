@@ -65,14 +65,14 @@ class VectorSpline3D(BaseGridder):
         damping=None,
         coupling=1,
         force_coords=None,
-        depth_scaling=20,
+        depth_scale="nearest",
     ):
         self.poisson = poisson
         self.depth = depth
         self.damping = damping
         self.coupling = coupling
         self.force_coords = force_coords
-        self.depth_scaling = depth_scaling
+        self.depth_scale = depth_scale
 
     def fit(self, coordinates, data, weights=None):
         """
@@ -123,12 +123,14 @@ class VectorSpline3D(BaseGridder):
             self.force_coords = tuple(i.copy() for i in n_1d_arrays(coordinates, n=2))
         else:
             self.force_coords = n_1d_arrays(self.force_coords, n=2)
-        if self.depth_scaling:
+        if self.depth_scale is None:
+            self._depth_scale = np.zeros_like(self.force_coords[0])
+        elif self.depth_scale == "nearest":
             points = np.transpose(self.force_coords)
-            tree = KDTree(points)
-            nndist = np.median(tree.query(points, k=self.depth_scaling)[0], axis=1)
-            nndist -= nndist.min()
-            self.depth = self.depth + nndist
+            nndist = np.median(KDTree(points).query(points, k=20)[0], axis=1)
+            self._depth_scale = nndist - nndist.min()
+        else:
+            self._depth_scale = self.depth_scale
         jacobian = self.jacobian(coordinates[:2], self.force_coords)
         self.force_ = least_squares(jacobian, data, weights, self.damping)
         return self
@@ -163,7 +165,7 @@ class VectorSpline3D(BaseGridder):
             north,
             force_east,
             force_north,
-            self.depth * np.ones_like(force_east),
+            self.depth + self._depth_scale,
             self.poisson,
             self.coupling,
             self.force_,
@@ -206,7 +208,7 @@ class VectorSpline3D(BaseGridder):
             north,
             force_east,
             force_north,
-            self.depth * np.ones_like(force_east),
+            self.depth + self._depth_scale,
             self.poisson,
             self.coupling,
             np.empty(shape, dtype=dtype),
@@ -358,7 +360,7 @@ class VectorSpline3DCV(BaseGridder):
         depths=(1e3, 10e3, 100e3),
         dampings=(None, 1e-3, 1e-1),
         couplings=(0, 1),
-        depth_scaling=20,
+        depth_scale="nearest",
         force_coords=None,
         cv=None,
         client=None,
@@ -368,7 +370,7 @@ class VectorSpline3DCV(BaseGridder):
         self.dampings = dampings
         self.couplings = couplings
         self.force_coords = force_coords
-        self.depth_scaling = depth_scaling
+        self.depth_scale = depth_scale
         self.cv = cv
         self.client = client
 
@@ -420,7 +422,7 @@ class VectorSpline3DCV(BaseGridder):
                 depth=depth,
                 coupling=coupling,
                 force_coords=self.force_coords,
-                depth_scaling=self.depth_scaling,
+                depth_scale=self.depth_scale,
             )
             scores.append(
                 client.submit(
@@ -446,7 +448,7 @@ class VectorSpline3DCV(BaseGridder):
             depth=self.depth_,
             coupling=self.coupling_,
             force_coords=self.force_coords,
-            depth_scaling=self.depth_scaling,
+            depth_scale=self.depth_scale,
         )
         self.spline_.fit(coordinates, data, weights=weights)
         return self
