@@ -442,7 +442,7 @@ class VectorSpline3DCV(BaseGridder):
         self.depth_ = combinations[best][1]
         self.poisson_ = combinations[best][2]
         self.coupling_ = combinations[best][3]
-        self.spline_ = VectorSpline3D(
+        self.gridder_ = VectorSpline3D(
             damping=self.damping_,
             poisson=self.poisson_,
             depth=self.depth_,
@@ -450,7 +450,7 @@ class VectorSpline3DCV(BaseGridder):
             force_coords=self.force_coords,
             depth_scale=self.depth_scale,
         )
-        self.spline_.fit(coordinates, data, weights=weights)
+        self.gridder_.fit(coordinates, data, weights=weights)
         return self
 
     def predict(self, coordinates):
@@ -474,5 +474,5 @@ class VectorSpline3DCV(BaseGridder):
             arrays with the predicted vector data values at each point.
 
         """
-        check_is_fitted(self, ["spline_"])
-        return self.spline_.predict(coordinates)
+        check_is_fitted(self, ["gridder_"])
+        return self.gridder_.predict(coordinates)
