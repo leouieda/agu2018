@@ -16,7 +16,7 @@ Abstract submitted to the AGU 2018 Fall Meeting.
 |Abstract|[G23B-0587](https://agu.confex.com/agu/fm18/meetingapp.cgi/Paper/428114)|
 |Time|Tuesday, 11 December 2018 / 13:40 - 18:00|
 |Room|Convention Ctr - Hall A-C (Poster Hall)|
-|Poster|doi:[TBD](TBD)|
+|Poster|doi:[10.6084/m9.figshare.7440683](https://doi.org/10.6084/m9.figshare.7440683)|
 
 ## Abstract
 
