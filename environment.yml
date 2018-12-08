@@ -1,6 +1,7 @@
 name: agu2018
 channels:
     - conda-forge
+    - conda-forge/label/dev
     - defaults
 dependencies:
     - python=3.6
@@ -23,3 +24,4 @@ dependencies:
     - pylint
     - black
     - verde
+    - gmt=6.*
