@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.36398148"
-     inkscape:cx="909.40687"
-     inkscape:cy="603.20067"
+     inkscape:zoom="0.12868689"
+     inkscape:cx="-1620.1421"
+     inkscape:cy="-757.23326"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -46,6 +46,104 @@
   </sodipodi:namedview>
   <defs
      id="defs2">
+    <marker
+       inkscape:stockid="StopM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker199766"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path199764"
+         d="M 0.0,5.65 L 0.0,-5.65"
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="StopM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="StopM"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path118686"
+         d="M 0.0,5.65 L 0.0,-5.65"
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="StopL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="StopL"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path118683"
+         d="M 0.0,5.65 L 0.0,-5.65"
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutS"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path118662"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1;fill:#333333;fill-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Sstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Sstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path118526"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1;fill:#333333;fill-opacity:1"
+         transform="scale(0.2) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker197945"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path118547"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#333333;stroke-opacity:1;fill:#333333;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.3) rotate(180) translate(-2.3,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker197864"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path118529"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1;fill:#333333;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
     <marker
        inkscape:isstock="true"
        style="overflow:visible;"
@@ -116822,7 +116920,7 @@
        inkscape:stockid="Arrow1Send">
       <path
          transform="scale(0.2) rotate(180) translate(6,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:#333333;stroke-width:1pt;stroke-opacity:1;fill:#333333;fill-opacity:1"
          d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
          id="path1655" />
     </marker>
@@ -117247,6 +117345,171 @@
          id="path1663-2-2-6"
          inkscape:connector-curvature="0" />
     </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-2"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-0"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-9-1"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-0-3"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-9-1-1"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-0-3-0"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-9-1-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-0-3-03"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-6-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-2-9"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-8"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="StopM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker199766-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path199764-6"
+         d="M 0,5.65 V -5.65"
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="StopM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="StopM-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118686-0"
+         d="M 0,5.65 V -5.65"
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-6"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutS-67"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path118662-5"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.2)" />
+    </marker>
   </defs>
   <metadata
      id="metadata5">
@@ -117397,11 +117660,11 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.16666603px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#023460;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="280.16748"
-       y="827.43774"
+       y="827.96692"
        id="text1224-3-35"><tspan
          sodipodi:role="line"
          x="280.82895"
-         y="827.43774"
+         y="827.96692"
          style="font-weight:bold;font-size:21.16666603px;letter-spacing:1.32291663px;fill:#023460;fill-opacity:1;stroke-width:0.26458332"
          id="tspan1089">Model selection</tspan></text>
     <text
@@ -117586,16 +117849,16 @@
            y="629.77563"
            style="text-align:justify;text-anchor:start" /></flowRegion><flowPara
          id="flowPara274116">GPS/GNSS data have high accuracy and temporal resolution but are spatially sparse. These data often need to be interpolated on regular grids (e.g., to be used as constraints during InSAR processing). Interpolation is done separately for each component of the velocity vector. Sandwell and Wessel (2016) proposed Green's functions based joint interpolation of the horizontal components, which are coupled through elasticity. We propose an extension of this method to include the vertical component, enabling the inclusion of vector data projected in arbitrary directions, such as InSAR line-of-sight velocities.</flowPara></flowRoot>    <g
-       transform="matrix(0.69861222,0,0,0.67923143,214.87357,143.97275)"
+       transform="matrix(0.68703158,0,0,0.66797206,216.57581,151.07857)"
        id="g353372">
       <polygon
          id="polygon313908"
-         points="488.35,455.9 471.75,455.9 471.75,366.27 475.19,366.27 475.19,452.46 488.35,452.46 "
+         points="475.19,452.46 488.35,452.46 488.35,455.9 471.75,455.9 471.75,366.27 475.19,366.27 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon313910"
-         points="475.19,366.32 471.75,366.32 471.75,276.68 488.35,276.68 488.35,280.12 475.19,280.12 "
+         points="488.35,280.12 475.19,280.12 475.19,366.32 471.75,366.32 471.75,276.68 488.35,276.68 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <path
@@ -117755,22 +118018,22 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <polygon
          id="polygon313974"
-         points="987.7,452.46 1000.9,452.46 1000.9,366.27 1004.3,366.27 1004.3,455.9 987.7,455.9 "
+         points="1004.3,455.9 987.7,455.9 987.7,452.46 1000.9,452.46 1000.9,366.27 1004.3,366.27 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon313976"
-         points="1004.3,366.32 1000.9,366.32 1000.9,280.12 987.7,280.12 987.7,276.68 1004.3,276.68 "
+         points="987.7,276.68 1004.3,276.68 1004.3,366.32 1000.9,366.32 1000.9,280.12 987.7,280.12 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon313978"
-         points="1061.7,455.9 1045.1,455.9 1045.1,366.27 1048.6,366.27 1048.6,452.46 1061.7,452.46 "
+         points="1048.6,452.46 1061.7,452.46 1061.7,455.9 1045.1,455.9 1045.1,366.27 1048.6,366.27 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon313980"
-         points="1048.6,366.32 1045.1,366.32 1045.1,276.68 1061.7,276.68 1061.7,280.12 1048.6,280.12 "
+         points="1061.7,280.12 1048.6,280.12 1048.6,366.32 1045.1,366.32 1045.1,276.68 1061.7,276.68 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <path
@@ -117805,12 +118068,12 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <polygon
          id="polygon313994"
-         points="1111.9,452.46 1125.1,452.46 1125.1,366.27 1128.5,366.27 1128.5,455.9 1111.9,455.9 "
+         points="1128.5,455.9 1111.9,455.9 1111.9,452.46 1125.1,452.46 1125.1,366.27 1128.5,366.27 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon313996"
-         points="1128.5,366.32 1125.1,366.32 1125.1,280.12 1111.9,280.12 1111.9,276.68 1128.5,276.68 "
+         points="1111.9,276.68 1128.5,276.68 1128.5,366.32 1125.1,366.32 1125.1,280.12 1111.9,280.12 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <path
@@ -117825,12 +118088,12 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <polygon
          id="polygon314002"
-         points="1244,455.9 1227.4,455.9 1227.4,366.27 1230.8,366.27 1230.8,452.46 1244,452.46 "
+         points="1230.8,452.46 1244,452.46 1244,455.9 1227.4,455.9 1227.4,366.27 1230.8,366.27 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon314004"
-         points="1230.8,366.32 1227.4,366.32 1227.4,276.68 1244,276.68 1244,280.12 1230.8,280.12 "
+         points="1244,280.12 1230.8,280.12 1230.8,366.32 1227.4,366.32 1227.4,276.68 1244,276.68 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <path
@@ -117865,17 +118128,18 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <polygon
          id="polygon314018"
-         points="1295.7,452.46 1308.9,452.46 1308.9,366.27 1312.3,366.27 1312.3,455.9 1295.7,455.9 "
+         points="1312.3,455.9 1295.7,455.9 1295.7,452.46 1308.9,452.46 1308.9,366.27 1312.3,366.27 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
       <polygon
          id="polygon314020"
-         points="1312.3,366.32 1308.9,366.32 1308.9,280.12 1295.7,280.12 1295.7,276.68 1312.3,276.68 "
+         points="1295.7,276.68 1312.3,276.68 1312.3,366.32 1308.9,366.32 1308.9,280.12 1295.7,280.12 "
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          transform="matrix(0.36506614,0,0,-0.36506614,-70.923849,732.10897)" />
     </g>
     <g
-       id="g40119">
+       id="g40119"
+       transform="translate(0,-4.7625001)">
       <flowRoot
          transform="matrix(0.26458333,0,0,0.26458333,0,-4.2333333)"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:justify;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
@@ -117901,7 +118165,7 @@
     </g>
     <g
        id="g353611"
-       transform="matrix(1.0368665,0,0,0.99645342,-0.33906271,1.9207737)">
+       transform="matrix(1.0368665,0,0,0.99645342,-0.33906271,-2.8417264)">
       <path
          style="fill:#cccccc;fill-opacity:0.8043478;stroke-width:2.04228663"
          d="m 108.41032,388.38818 140.25203,-0.21465 v 97.26395 l -140.25203,0.21453 z"
@@ -118383,7 +118647,7 @@
            id="rect119116" /></flowRegion><flowPara
          id="flowPara119118" /></flowRoot>    <g
        id="g197661"
-       transform="translate(0,15.875)">
+       transform="translate(-2.1166667,15.875)">
       <flowRoot
          xml:space="preserve"
          id="flowRoot119120"
@@ -118517,12 +118781,284 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       </g>
     </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot197663"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:justify;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,0,2.6458333)"><flowRegion
+         id="flowRegion197665"
+         style="text-align:justify;text-anchor:start"><rect
+           id="rect197667"
+           width="1745.5159"
+           height="377.85513"
+           x="146.67384"
+           y="3185.9436"
+           style="text-align:justify;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara197669">We employed cross-validation techniques to automatically select optimal values for controlling parameters of the interpolation. Cross-validation works by splitting the dataset into two parts: one for fitting the interpolator (the training set) and one for evaluating the interpolator's performance (the testing set). In particular, we used k-fold cross-validation, in which the dataset is randomly shuffled and split k times for a more robust measure of performance.</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:4.73849821;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect197671"
+       width="139.31726"
+       height="17.780001"
+       x="-211.41771"
+       y="751.58594" />
+    <g
+       id="g203719"
+       transform="translate(13.664888)">
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path197849-8-1"
+         d="m 120.94909,1087.0327 h 47.36507"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS-9-1)" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path197849-8"
+         d="m 89.437046,1029.2351 v 40.4859"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS-9)" />
+      <g
+         id="g197773-8"
+         transform="translate(-1.2837699,71.965848)">
+        <rect
+           style="opacity:1;fill:#013460;fill-opacity:1;stroke:none;stroke-width:2.94259906;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect197673-0"
+           width="63.374317"
+           height="26.77149"
+           x="59.033657"
+           y="931.83185" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="90.695847"
+           y="948.51343"
+           id="text197677-2"><tspan
+             sodipodi:role="line"
+             id="tspan197675-1"
+             x="90.695847"
+             y="948.51343"
+             style="font-weight:normal;fill:#f9f9f9;stroke-width:0.26458332">train</tspan></text>
+      </g>
+      <g
+         id="g197773-0"
+         transform="translate(114.90688,71.965848)">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.8627451;stroke:#013460;stroke-width:2.94259906;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect197673-5"
+           width="63.374317"
+           height="26.77149"
+           x="59.033657"
+           y="931.83185" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="90.695847"
+           y="948.51343"
+           id="text197677-1"><tspan
+             sodipodi:role="line"
+             id="tspan197675-10"
+             x="90.695847"
+             y="948.51343"
+             style="font-weight:normal;fill:#000000;stroke-width:0.26458332">test</tspan></text>
+      </g>
+      <g
+         id="g197773-85"
+         transform="translate(-1.2837699,141.81501)">
+        <rect
+           style="opacity:1;fill:#d40000;fill-opacity:0.8627451;stroke:none;stroke-width:2.94259906;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect197673-06"
+           width="63.374317"
+           height="26.77149"
+           x="59.033657"
+           y="931.83185" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="90.695847"
+           y="948.51343"
+           id="text197677-4"><tspan
+             sodipodi:role="line"
+             id="tspan197675-6"
+             x="90.695847"
+             y="948.51343"
+             style="font-weight:normal;fill:#f9f9f9;stroke-width:0.26458332">forces</tspan></text>
+      </g>
+      <g
+         id="g197773-2"
+         transform="translate(114.90688,141.81501)">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.8627451;stroke:#013460;stroke-width:2.94259906;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect197673-58"
+           width="63.374317"
+           height="26.77149"
+           x="59.033657"
+           y="931.83185" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d40000;fill-opacity:0.8627451;stroke:none;stroke-width:0.26458332"
+           x="90.695847"
+           y="948.51343"
+           id="text197677-6"><tspan
+             sodipodi:role="line"
+             id="tspan197675-2"
+             x="90.695847"
+             y="948.51343"
+             style="font-weight:normal;fill:#d40000;fill-opacity:0.8627451;stroke-width:0.26458332">test</tspan></text>
+      </g>
+      <g
+         style="fill:#ffdd55"
+         id="g197773-84"
+         transform="translate(230.85927,104.93509)">
+        <rect
+           style="opacity:1;fill:#ffdd55;fill-opacity:0.8627451;stroke:none;stroke-width:2.94259906;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect197673-7"
+           width="63.374317"
+           height="26.77149"
+           x="59.033657"
+           y="931.83185" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="90.695847"
+           y="948.51343"
+           id="text197677-24"><tspan
+             sodipodi:role="line"
+             id="tspan197675-0"
+             x="90.695847"
+             y="948.51343"
+             style="font-weight:normal;fill:#1a1a1a;stroke-width:0.26458332">R² score</tspan></text>
+      </g>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path197849"
+         d="m 89.437046,954.51649 v 45.77761"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS)" />
+      <g
+         transform="translate(-1.2837699,4.2333532)"
+         id="g197773">
+        <rect
+           style="opacity:1;fill:#013460;fill-opacity:1;stroke:none;stroke-width:2.94259906;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect197673"
+           width="63.374317"
+           height="26.77149"
+           x="59.033657"
+           y="931.83185" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="90.695847"
+           y="948.51343"
+           id="text197677"><tspan
+             sodipodi:role="line"
+             id="tspan197675"
+             x="90.695847"
+             y="948.51343"
+             style="font-weight:normal;fill:#f9f9f9;stroke-width:0.26458332">dataset</tspan></text>
+      </g>
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path197849-9"
+         d="M 90.948743,986.66273 H 206.33228 v 11.395"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS-6)" />
+      <text
+         id="text198410"
+         y="980.64856"
+         x="149.02568"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="980.64856"
+           x="149.02568"
+           id="tspan198408"
+           sodipodi:role="line">split</tspan></text>
+      <text
+         transform="rotate(-90)"
+         id="text198649"
+         y="83.667213"
+         x="-1048.485"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="83.667213"
+           x="-1048.485"
+           id="tspan198647"
+           sodipodi:role="line">fit</tspan></text>
+      <text
+         id="text198830"
+         y="1081.8508"
+         x="145.88026"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="1081.8508"
+           x="145.88026"
+           id="tspan198828"
+           sodipodi:role="line">predict</tspan></text>
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         d="m 237.89651,1087.0327 h 23.61848 v -36.6292 m -24.61798,-33.2199 h 24.61798 v 33.2199 h 23.92833"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS-9-1-4)"
+         id="path197849-8-1-9" />
+      <text
+         transform="rotate(-90)"
+         id="text198649-1"
+         y="255.61256"
+         x="-1051.3501"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="255.61256"
+           x="-1051.3501"
+           id="tspan198647-9"
+           sodipodi:role="line">score</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path197849-0"
+         d="M 365.45827,936.54371 V 1101.8566"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker199766);marker-end:url(#StopM)" />
+      <text
+         transform="rotate(24.797453)"
+         x="650.09961"
+         y="773.63257"
+         id="text200888"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="773.63257"
+           x="650.09961"
+           id="tspan200886"
+           sodipodi:role="line">Repeat for <tspan
+   id="tspan200890"
+   style="font-style:italic">k</tspan> folds/splits</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path197849-6"
+         d="M 322.79577,1034.0677 C 314.53634,995.61706 203.74292,947.25375 170.64999,971.90403"
+         style="fill:none;stroke:#333333;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutS-67)" />
+      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,-6.4250751,50.443099)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.29999995;font-family:Barlow;-inkscape-font-specification:Barlow;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         id="flowRoot203581"
+         xml:space="preserve"><flowRegion
+           style="text-align:start;text-anchor:start"
+           id="flowRegion203583"><rect
+             style="text-align:start;text-anchor:start"
+             y="3557.9707"
+             x="1446.3401"
+             height="552.69812"
+             width="438.07883"
+             id="rect203585" /></flowRegion><flowPara
+           id="flowPara203587">Repeat for all combinations of the controlling parameter values</flowPara></flowRoot>    </g>
   </g>
   <g
      inkscape:label="guides"
      id="layer3"
      inkscape:groupmode="layer"
-     style="display:inline">
+     style="display:none">
     <rect
        y="38.980751"
        x="38.980728"
